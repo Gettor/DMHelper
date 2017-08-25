@@ -28,14 +28,21 @@ const SEGMENTS: Segment[] = [
     {id: 12, xPos: "600px", yPos: "300px"},
 ];
 
+let busy = 0;
+
 function moveWithFps(div, val, direction)
 {
     //console.log(val + " : " + direction);
+    if (busy % 26 == 0)
+    {
+        busy++;
     for (let i = 1; i <= 25; i++)
     {
         setTimeout(function() {
+            busy++;
             div.style.left = String(val - direction * (100 - i*4)) + "px";
         }, i*20);
+    }
     }
 }
 
