@@ -24,13 +24,20 @@ const SEGMENTS: Segment[] = [
     {id: 8, xPos: "200px", yPos: "400px"}
 ];
 
+const minX = 100;
+const maxX = 300;
+const minY = 100;
+const maxY = 500;
+
 function move(x, y) {
     //console.log(div_pc.style.top);
-    let div_pc = document.getElementById("pc_dot");
+    let div_pc = document.getElementById("pc_dot");y
     let old_x = parseInt(div_pc.style.left);
     let old_y = parseInt(div_pc.style.top);
-    div_pc.style.left = String(old_x + x) + "px";
-    div_pc.style.top = String(old_y + y) + "px";
+    if (old_x+x < maxX && old_x+x > minX)
+        div_pc.style.left = String(old_x + x) + "px";
+    if (old_y+y < maxY && old_y+y > minY)
+        div_pc.style.top = String(old_y + y) + "px";
 }
 
 @Component({
@@ -46,7 +53,6 @@ export class AppComponent {
         xPos: "133px",
         yPos: "333px"
     };
-
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
@@ -66,6 +72,8 @@ export class AppComponent {
                 break;
             default:
         }
+        let div_pc = document.getElementById("pc_dot");
+        console.log(div_pc.style.left + " " + div_pc.style.top);
     }
 
 }
