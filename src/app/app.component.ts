@@ -28,6 +28,17 @@ const SEGMENTS: Segment[] = [
     {id: 12, xPos: "600px", yPos: "300px"},
 ];
 
+function moveWithFps(div, val, direction)
+{
+    //console.log(val + " : " + direction);
+    for (let i = 1; i <= 25; i++)
+    {
+        setTimeout(function() {
+            div.style.left = String(val - direction * (100 - i*4)) + "px";
+        }, i*20);
+    }
+}
+
 function move(x, y) {
     let div_pc = document.getElementById("pc_dot");y
     let new_x = parseInt(div_pc.style.left) + x;
@@ -44,21 +55,23 @@ function move(x, y) {
     }
     if (movementPossible)
     {
-        setTimeout(function() {
-            div_pc.style.left = String(new_x-80) + "px";
-        }, 200);
-        setTimeout(function() {
-            div_pc.style.left = String(new_x-60) + "px";
-        }, 400);
-        setTimeout(function() {
-            div_pc.style.left = String(new_x-40) + "px";
-        }, 600);
-        setTimeout(function() {
-            div_pc.style.left = String(new_x-20) + "px";
-        }, 800);
-        setTimeout(function() {
-            div_pc.style.left = String(new_x) + "px";
-        }, 1000);
+        let direction = x > 0 ? 1 : -1;
+        moveWithFps(div_pc, new_x, direction);
+        //setTimeout(function() {
+            //div_pc.style.left = String(new_x-80) + "px";
+        //}, 200);
+        //setTimeout(function() {
+            //div_pc.style.left = String(new_x-60) + "px";
+        //}, 400);
+        //setTimeout(function() {
+            //div_pc.style.left = String(new_x-40) + "px";
+        //}, 600);
+        //setTimeout(function() {
+            //div_pc.style.left = String(new_x-20) + "px";
+        //}, 800);
+        //setTimeout(function() {
+            //div_pc.style.left = String(new_x) + "px";
+        //}, 1000);
         //div_pc.style.left = String(new_x) + "px";
         div_pc.style.top = String(new_y) + "px";
     }
@@ -80,7 +93,7 @@ export class AppComponent {
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-        console.log(event.key);
+        console.log(event);
         switch(event.key){
             case "a":
                 move(-100, 0);
@@ -95,9 +108,9 @@ export class AppComponent {
                 move(0, -100);
                 break;
             default:
+
         }
-        let div_pc = document.getElementById("pc_dot");
-        console.log(div_pc.style.left + " " + div_pc.style.top);
+            //console.log(div_pc.style.left + " " + div_pc.style.top);
     }
 
 }
