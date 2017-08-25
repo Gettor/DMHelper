@@ -44,7 +44,22 @@ function move(x, y) {
     }
     if (movementPossible)
     {
-        div_pc.style.left = String(new_x) + "px";
+        setTimeout(function() {
+            div_pc.style.left = String(new_x-80) + "px";
+        }, 200);
+        setTimeout(function() {
+            div_pc.style.left = String(new_x-60) + "px";
+        }, 400);
+        setTimeout(function() {
+            div_pc.style.left = String(new_x-40) + "px";
+        }, 600);
+        setTimeout(function() {
+            div_pc.style.left = String(new_x-20) + "px";
+        }, 800);
+        setTimeout(function() {
+            div_pc.style.left = String(new_x) + "px";
+        }, 1000);
+        //div_pc.style.left = String(new_x) + "px";
         div_pc.style.top = String(new_y) + "px";
     }
 }
