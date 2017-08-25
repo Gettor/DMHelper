@@ -21,23 +21,32 @@ const SEGMENTS: Segment[] = [
     {id: 5, xPos: "200px", yPos: "100px"},
     {id: 6, xPos: "200px", yPos: "200px"},
     {id: 7, xPos: "200px", yPos: "300px"},
-    {id: 8, xPos: "200px", yPos: "400px"}
+    {id: 8, xPos: "200px", yPos: "400px"},
+    {id: 9, xPos: "300px", yPos: "300px"},
+    {id: 10, xPos: "400px", yPos: "300px"},
+    {id: 11, xPos: "500px", yPos: "300px"},
+    {id: 12, xPos: "600px", yPos: "300px"},
 ];
 
-const minX = 100;
-const maxX = 300;
-const minY = 100;
-const maxY = 500;
-
 function move(x, y) {
-    //console.log(div_pc.style.top);
     let div_pc = document.getElementById("pc_dot");y
-    let old_x = parseInt(div_pc.style.left);
-    let old_y = parseInt(div_pc.style.top);
-    if (old_x+x < maxX && old_x+x > minX)
-        div_pc.style.left = String(old_x + x) + "px";
-    if (old_y+y < maxY && old_y+y > minY)
-        div_pc.style.top = String(old_y + y) + "px";
+    let new_x = parseInt(div_pc.style.left) + x;
+    let new_y = parseInt(div_pc.style.top) + y;
+    let movementPossible = false;
+    for (let i = 0; i < SEGMENTS.length; i++)
+    {
+        const s = SEGMENTS[i];
+        const minX = parseInt(s.xPos);
+        const maxX = parseInt(s.xPos) + 100;
+        const minY = parseInt(s.yPos);
+        const maxY = parseInt(s.yPos) + 100;
+        if (new_x > minX && new_x < maxX && new_y > minY && new_y < maxY) movementPossible = true;
+    }
+    if (movementPossible)
+    {
+        div_pc.style.left = String(new_x) + "px";
+        div_pc.style.top = String(new_y) + "px";
+    }
 }
 
 @Component({
