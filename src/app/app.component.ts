@@ -28,23 +28,29 @@ const SEGMENTS: Segment[] = [
     {id: 12, xPos: "600px", yPos: "300px"},
 ];
 
-let busy = 0;
+let PC: Pc = {
+    id: 1,
+    xPos: "133px",
+    yPos: "333px"
+};
 
-function moveWithFps(div, val, direction)
-{
-    //console.log(val + " : " + direction);
-    if (busy % 26 == 0)
-    {
-        busy++;
-    for (let i = 1; i <= 25; i++)
-    {
-        setTimeout(function() {
-            busy++;
-            div.style.left = String(val - direction * (100 - i*4)) + "px";
-        }, i*20);
-    }
-    }
-}
+//let busy = 0;
+
+//function moveWithFps(div, val, direction)
+//{
+    ////console.log(val + " : " + direction);
+    //if (busy % 26 == 0)
+    //{
+        //busy++;
+    //for (let i = 1; i <= 25; i++)
+    //{
+        //setTimeout(function() {
+            //busy++;
+            //div.style.left = String(val - direction * (100 - i*4)) + "px";
+        //}, i*20);
+    //}
+    //}
+//}
 
 function move(x, y) {
     let div_pc = document.getElementById("pc_dot");y
@@ -62,25 +68,10 @@ function move(x, y) {
     }
     if (movementPossible)
     {
-        let direction = x > 0 ? 1 : -1;
-        moveWithFps(div_pc, new_x, direction);
-        //setTimeout(function() {
-            //div_pc.style.left = String(new_x-80) + "px";
-        //}, 200);
-        //setTimeout(function() {
-            //div_pc.style.left = String(new_x-60) + "px";
-        //}, 400);
-        //setTimeout(function() {
-            //div_pc.style.left = String(new_x-40) + "px";
-        //}, 600);
-        //setTimeout(function() {
-            //div_pc.style.left = String(new_x-20) + "px";
-        //}, 800);
-        //setTimeout(function() {
-            //div_pc.style.left = String(new_x) + "px";
-        //}, 1000);
-        //div_pc.style.left = String(new_x) + "px";
-        div_pc.style.top = String(new_y) + "px";
+        //let direction = x > 0 ? 1 : -1;
+        //moveWithFps(div_pc, new_x, direction);
+        PC.xPos = String(new_x) + "px";
+        PC.yPos = String(new_y) + "px";
     }
 }
 
@@ -92,11 +83,7 @@ function move(x, y) {
 export class AppComponent {
     title = 'D2Dung';
     segments = SEGMENTS;
-    pc: Pc = {
-        id: 1,
-        xPos: "133px",
-        yPos: "333px"
-    };
+    pc = PC;
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
