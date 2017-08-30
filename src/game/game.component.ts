@@ -77,10 +77,10 @@ function move(x, y) {
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.css']
 })
-export class AppComponent {
+export class GameComponent {
     title = 'D2Dung';
     segments = SEGMENTS;
     pc = PC;
