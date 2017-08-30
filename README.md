@@ -9,6 +9,9 @@ If not already installed, install nodeJS from https://nodejs.org/en/download/
 Checkout this git project.
 
 Inside project, execute:
+
 `npm install`
+
 `npm start`
+
 This should start project at `localhost::4200`
