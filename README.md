@@ -13,3 +13,7 @@ Inside project, execute:
 `npm start`
 
 This should start project at `localhost::4200`
+
+# Database
+
+MongoDB (version 3.4 currently) is used here. Set it up according to tutorial here (for Ubuntu): `https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/`
