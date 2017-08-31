@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { Segment, GameService } from './game.service'
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/concatAll';
 
-export class Segment {
-    id: number;
-    xPos: string;
-    yPos: string;
-}
+//export class Segment {
+    //id: number;
+    //xPos: string;
+    //yPos: string;
+//}
 
 export class Pc {
     id: number;
@@ -64,6 +69,28 @@ export class GameComponent {
     title = 'D2Dung';
     segments = SEGMENTS;
     pc = PC;
+    testSegments = new Array<Segment>();
+    sub : Subscription;
+
+
+    constructor(private route : ActivatedRoute, private router : Router, private gameService : GameService) {
+    }
+
+    ngOnInit() {
+        //this.testSegments = this.gameService.getSegments();
+        //let temp = this.gameService.getSegments()();
+        //console.log(this.testSegments);
+        this.sub = this.route.params
+          .map((params : any) => (this.getSegments()))
+          .concatAll()
+          .subscribe(seg => {
+              console.log(seg);
+        });
+    }
+
+    getSegments() : Observable<Segment[]> {
+        return this.gameService.getSegments();
+    }
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
