@@ -77,17 +77,17 @@ export class GameComponent {
     }
 
     ngOnInit() {
-        this.testSegments = this.getSegments();
+        //this.testSegments = this.getSegments();
         //console.log(this.testSegments);
-        //this.sub = this.route.params
-          //.map((params : any) => (this.getSegments()))
-          //.concatAll()
-          //.subscribe(seg => {
-              //console.log(seg);
-        //});
+        this.sub = this.route.params
+          .map((params : any) => (this.getSegments()))
+          .concatAll()
+          .subscribe(seg => {
+              console.log(seg);
+        });
     }
 
-    getSegments() : Segment[] {
+    getSegments() : Observable<Segment[]> {
         return this.gameService.getSegments();
     }
 

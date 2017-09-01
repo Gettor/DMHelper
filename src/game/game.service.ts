@@ -31,12 +31,9 @@ export class GameService {
     this.headers.append('Accept', 'application/json');
   }
 
-    public getSegments() : Segment[] {
-        let retVal = new Array<Segment>();
-        this.http.get(this.hostUrl + this.actionUrl + "/get")
-            .subscribe(data => { console.log(data); retVal = <Segment[]>data; });
-        console.log(retVal);
-        return retVal;
+    public getSegments() : Observable<Segment[]> {
+        return this.http.get(this.hostUrl + this.actionUrl + "/get")
+            .map(data => <Segment[]>(data));
         //return this.http.get(this.hostUrl + this.actionUrl + "/get")
             //.map((response : Response) => (<Segment[]>response.json()));
         //var options = { host : this.hostUrl, path: this.actionUrl + '/get', protocol: 'http' };
