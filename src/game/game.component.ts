@@ -19,18 +19,18 @@ export class Pc {
 }
 
 const SEGMENTS: Segment[] = [
-    {id: 1, xPos: "100px", yPos: "100px"},
-    {id: 2, xPos: "100px", yPos: "200px"},
-    {id: 3, xPos: "100px", yPos: "300px"},
-    {id: 4, xPos: "100px", yPos: "400px"},
-    {id: 5, xPos: "200px", yPos: "100px"},
-    {id: 6, xPos: "200px", yPos: "200px"},
-    {id: 7, xPos: "200px", yPos: "300px"},
-    {id: 8, xPos: "200px", yPos: "400px"},
-    {id: 9, xPos: "300px", yPos: "300px"},
-    {id: 10, xPos: "400px", yPos: "300px"},
-    {id: 11, xPos: "500px", yPos: "300px"},
-    {id: 12, xPos: "600px", yPos: "300px"},
+    {_id: 1, xPos: "100px", yPos: "100px"},
+    {_id: 2, xPos: "100px", yPos: "200px"},
+    {_id: 3, xPos: "100px", yPos: "300px"},
+    {_id: 4, xPos: "100px", yPos: "400px"},
+    {_id: 5, xPos: "200px", yPos: "100px"},
+    {_id: 6, xPos: "200px", yPos: "200px"},
+    {_id: 7, xPos: "200px", yPos: "300px"},
+    {_id: 8, xPos: "200px", yPos: "400px"},
+    {_id: 9, xPos: "300px", yPos: "300px"},
+    {_id: 10, xPos: "400px", yPos: "300px"},
+    {_id: 11, xPos: "500px", yPos: "300px"},
+    {_id: 12, xPos: "600px", yPos: "300px"},
 ];
 
 let PC: Pc = {
@@ -77,18 +77,17 @@ export class GameComponent {
     }
 
     ngOnInit() {
-        //this.testSegments = this.gameService.getSegments();
-        //let temp = this.gameService.getSegments()();
+        this.testSegments = this.getSegments();
         //console.log(this.testSegments);
-        this.sub = this.route.params
-          .map((params : any) => (this.getSegments()))
-          .concatAll()
-          .subscribe(seg => {
-              console.log(seg);
-        });
+        //this.sub = this.route.params
+          //.map((params : any) => (this.getSegments()))
+          //.concatAll()
+          //.subscribe(seg => {
+              //console.log(seg);
+        //});
     }
 
-    getSegments() : Observable<Segment[]> {
+    getSegments() : Segment[] {
         return this.gameService.getSegments();
     }
 
