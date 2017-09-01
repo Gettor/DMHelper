@@ -18,20 +18,7 @@ export class Pc {
     yPos: string;
 }
 
-const SEGMENTS: Segment[] = [
-    {_id: 1, xPos: "100px", yPos: "100px"},
-    {_id: 2, xPos: "100px", yPos: "200px"},
-    {_id: 3, xPos: "100px", yPos: "300px"},
-    {_id: 4, xPos: "100px", yPos: "400px"},
-    {_id: 5, xPos: "200px", yPos: "100px"},
-    {_id: 6, xPos: "200px", yPos: "200px"},
-    {_id: 7, xPos: "200px", yPos: "300px"},
-    {_id: 8, xPos: "200px", yPos: "400px"},
-    {_id: 9, xPos: "300px", yPos: "300px"},
-    {_id: 10, xPos: "400px", yPos: "300px"},
-    {_id: 11, xPos: "500px", yPos: "300px"},
-    {_id: 12, xPos: "600px", yPos: "300px"},
-];
+let SEGMENTS: Segment[];
 
 let PC: Pc = {
     id: 1,
@@ -83,7 +70,8 @@ export class GameComponent {
           .map((params : any) => (this.getSegments()))
           .concatAll()
           .subscribe(seg => {
-              console.log(seg);
+              this.segments = seg;
+              SEGMENTS = seg;
         });
     }
 
