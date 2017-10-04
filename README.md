@@ -14,6 +14,16 @@ Inside project, execute:
 
 This should start project at `localhost::4200`
 
+Also make sure to have prerequisites:
+
+`node server.js`
+
+Sets up lightweight backend server for database queries
+
+`sudo service mongod start`
+
+Use this command if mongoDB is not currently running
+
 # Database
 
 MongoDB (version 3.4.7 currently) is used here. Set it up according to tutorial here (for Ubuntu): `https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/`
