@@ -4,9 +4,12 @@
 
 #area{
     position: fixed;
-    left: 25%;
+    left: 25vw;
+    bottom: 25vh;
     width: 50vw;
+    max-width: 50vh;
     height: 50vw;
+    max-height: 50vh;
     border-radius: 1px;
     border: 1px solid #000000;
     overflow: hidden;
