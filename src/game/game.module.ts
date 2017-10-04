@@ -6,12 +6,14 @@ import { GameComponent } from './game.component';
 //import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './game.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     GameComponent
   ],
   imports: [
+      NgbModule,
       HttpClientModule,
       BrowserModule,
       FormsModule,
