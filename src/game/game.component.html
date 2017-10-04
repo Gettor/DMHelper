@@ -6,9 +6,13 @@
 </div>
 Cookie.
 
+<div id="everything">
+<div id="area">
 <ng-container *ngFor="let seg of segments">
     <div id="rectangle" [style.top]="seg.yPos" [style.left]="seg.xPos">{{seg.id}}</div>
     <!--<span class="badge">{{seg._id}}</span> {{seg.xPos}} - {{seg.yPos}}-->
 </ng-container>
 
 <div id="pc_dot" [style.top]="pc.yPos" [style.left]="pc.xPos"></div>
+</div>
+</div>

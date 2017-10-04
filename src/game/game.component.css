@@ -1,3 +1,17 @@
+#everything{
+    background-color: #000000;
+}
+
+#area{
+    position: fixed;
+    left: 25%;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 1px;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+
 #rectangle{
     position: absolute;
     width:100px;
